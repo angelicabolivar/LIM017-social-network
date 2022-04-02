@@ -145,15 +145,20 @@ export const publications = () => {
   sectionPublications.appendChild(formPublication);
 
   let imageUpload;
+  let imgPublication;
+
   inputImage.addEventListener('change', () => {
     imageUpload = inputImage.files[0];
-    storageFunction(imageUpload, image);
+    storageFunction(imageUpload, image)
+      .then((url) => {
+        imgPublication = url;
+      });
   });
 
   btnSubmit.addEventListener('click', () => {
     const publication = {
       Título: inputTitle.value,
-      Foto: imageUpload.name,
+      Foto: imgPublication,
       Estado: selectState.value,
       Categoría: selectCategory.value,
       Description: inputDescription.value,
