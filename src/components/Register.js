@@ -1,12 +1,6 @@
 /* eslint-disable import/no-cycle */
-/* eslint-disable quotes */
-/* eslint-disable eol-last */
-/* eslint-disable padded-blocks */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable indent */
-
-import { onNavigate } from "../lib/ViewController.js";
-import { createUser, signGoogle } from "../authentication.js";
+import { onNavigate } from '../lib/ViewController.js';
+import { createUser, signGoogle } from '../authentication.js';
 
 /* eslint-disable max-len */
 export const register = () => {
@@ -107,7 +101,7 @@ export const register = () => {
   const thirdDiv = document.createElement('div');
   const pTextBottom = document.createElement('p');
   pTextBottom.setAttribute('class', 'text-bottom');
-  pTextBottom.textContent = 'o con tu cuenta de gmail';
+  pTextBottom.textContent = 'o con tu cuenta de google';
 
   const divSocialNetworks = document.createElement('div');
   divSocialNetworks.setAttribute('id', 'social-networks');
@@ -124,7 +118,7 @@ export const register = () => {
 
   const pLittleTextBottom = document.createElement('p');
   pLittleTextBottom.setAttribute('class', 'text-bottom');
-  pLittleTextBottom.textContent = 'Ya tengo una cuenta.';
+  pLittleTextBottom.textContent = 'Ya tengo una cuenta. ';
 
   const span = document.createElement('span');
   const aLinkLogin = document.createElement('a');
@@ -152,5 +146,5 @@ export const register = () => {
   aLinkGoogle.addEventListener('click', signGoogle);
 
   return registerSection;
-
+// eslint-disable-next-line eol-last
 };

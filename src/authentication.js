@@ -124,7 +124,7 @@ export const createUser = (
       const user = userCredential.user;
       sendEmailVerification(user)
         .then(() => {
-          console.log(user.emailVerified);
+
           onNavigate('/login');
           // Email verification sent!
         });

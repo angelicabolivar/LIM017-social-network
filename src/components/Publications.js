@@ -1,8 +1,9 @@
 /* eslint-disable eol-last */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable no-console */
 /* eslint-disable import/no-cycle */
-/* eslint-disable import/named */
-/* eslint-disable no-unused-vars */
 import { storageFunction } from '../Storage.js';
+import { insertData } from '../database.js';
 
 export const publications = () => {
   const sectionPublications = document.createElement('section');
@@ -128,9 +129,10 @@ export const publications = () => {
   divConsiderations.appendChild(considerations);
   divConsiderations.appendChild(listConsiderations);
 
-  const btnSubmit = document.createElement('button');
+  const btnSubmit = document.createElement('input');
+  btnSubmit.setAttribute('type', 'button');
   btnSubmit.setAttribute('class', 'button');
-  btnSubmit.textContent = 'Guardar';
+  btnSubmit.setAttribute('value', 'Guardar');
 
   formPublication.appendChild(labelImage);
   formPublication.appendChild(inputTitle);
@@ -142,13 +144,22 @@ export const publications = () => {
   sectionPublications.appendChild(divTitlePublications);
   sectionPublications.appendChild(formPublication);
 
-  // Aquí almanceno el return de la función storageFunction:
-
-  let urlImag;
-
+  let imageUpload;
   inputImage.addEventListener('change', () => {
-    const imageUpload = inputImage.files[0];
+    imageUpload = inputImage.files[0];
     storageFunction(imageUpload, image);
+  });
+
+  btnSubmit.addEventListener('click', () => {
+    const publication = {
+      Título: inputTitle.value,
+      Foto: imageUpload.name,
+      Estado: selectState.value,
+      Categoría: selectCategory.value,
+      Description: inputDescription.value,
+    };
+    insertData(publication);
+    return console.log(publication);
   });
 
   return sectionPublications;
