@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 /* eslint-disable eol-last */
+=======
+>>>>>>> 697af306ccd17e81613475bbad7b6a150d97e11a
 /* eslint-disable import/no-cycle */
 import { onNavigate } from '../lib/ViewController.js';
 

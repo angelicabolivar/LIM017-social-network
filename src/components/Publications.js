@@ -4,9 +4,11 @@
 /* eslint-disable import/no-cycle */
 import { storageFunction } from '../Storage.js';
 import { insertData } from '../database.js';
+import { onNavigate } from '../lib/ViewController.js';
 
 export const publications = () => {
   const sectionPublications = document.createElement('section');
+  sectionPublications.setAttribute('class', 'section-publications');
 
   const divTitlePublications = document.createElement('div');
   divTitlePublications.setAttribute('class', 'div-nav');
@@ -43,6 +45,7 @@ export const publications = () => {
   const inputTitle = document.createElement('input');
   inputTitle.setAttribute('type', 'text');
   inputTitle.setAttribute('placeholder', 'Título');
+  inputTitle.setAttribute('id', 'input-title');
 
   const divCategoryState = document.createElement('div');
   divCategoryState.setAttribute('class', 'category-state');
@@ -135,11 +138,7 @@ export const publications = () => {
   btnSubmit.setAttribute('value', 'Guardar');
 
   formPublication.appendChild(labelImage);
-  formPublication.appendChild(inputTitle);
-  formPublication.appendChild(divCategoryState);
-  formPublication.appendChild(inputDescription);
-  formPublication.appendChild(divConsiderations);
-  formPublication.appendChild(btnSubmit);
+  formPublication.appendChild(divInputsDesktop);
 
   sectionPublications.appendChild(divTitlePublications);
   sectionPublications.appendChild(formPublication);
